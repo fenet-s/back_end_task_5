@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp Project Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Project Manager</h1>
+  <form id="projectForm">
+    <input type="text" id="projectName" placeholder="Project Name" required>
+    <input type="text" id="projectDescription" placeholder="Project Description" required>
+    <select id="projectStatus" required>
+      <option value="" disabled selected>Select Status</option>
+      <option value="not-started">Not Started</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+    <button type="submit" id="addProjectButton">Add Project</button>
+  </form>
+  <ul id="projectList">
+
+  </ul>
+  <script src="app.js"></script>
+</body>
+</html>
