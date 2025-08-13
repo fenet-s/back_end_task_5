@@ -25,9 +25,9 @@ const projectService=require('../services/projectService')
 }
 const update=(req,res)=>{
     const id=parseInt(req.params.id);
-    const updated=projectService.updateProject(id);
+    const updated=projectService.updateProject(id,req.body);
     if(!updated) return res.status(404).json({message:'Project not found'});
-    res.json({message:'updated'})
+    res.json({message:'updated', project:updated})
 }
 module.exports={
     getAll,

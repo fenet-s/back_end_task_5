@@ -11,15 +11,15 @@ async function loadprojects() {
 
     projects.forEach(project => {
         const li = document.createElement('li');
-        li.textContent = `Project_Name: ${project.name} -- Description: ${project.description} -- Status: ${project.status} `;
+        li.textContent = `Project_Name: ${project.name}-- Description: ${project.description} -- Status: ${project.status} `;
 
-        // Edit button
+
         const editBtn = document.createElement('button');
         editBtn.textContent = 'Edit';
         editBtn.style.marginLeft = '10px';
         editBtn.addEventListener('click', () => editProject(project));
 
-        // Delete button
+        
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
         deleteBtn.style.marginLeft = '5px';
@@ -64,7 +64,7 @@ async function editProject(project) {
 
     if (newName && newDescription && newStatus) {
         await fetch(`${API_URL}/${project.id}`, {
-            method: 'PUT', // or 'PATCH'
+            method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 name: newName,
