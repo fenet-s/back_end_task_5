@@ -1,27 +1,24 @@
-let projects=require('../data/projectsData');
-const getAllProjects=()=>projects;
-const getProjectById=(id)=>projects.find(s=>s.id===id);
-const addProject=(name,description,status)=>{
-    const newProject={
-        id:projects.length +1,
-        name,
-        description,
-        status
-    };
-    projects.push(newProject)
-    return newProject;
+const Project = require('../models/ProjectModel');
+async function getAllProjects() {
+    return  await Project.find()
 };
-const deleteProject=(id)=>{
-    const initialLength=projects.length;
-    projects=projects.filter(s=>s.id!==id);
-    return projects.length<initialLength;
+async function getProjectById(id) {
+    return await Project.findById(id)
+    
+} 
+async function addProject(name,description,status) {
+    
+        const newProject = new Project({ name, description, status });
+        return await newProject.save();
+    
 };
-const updateProject=(id,project)=>{
-    const to_be_updated_project=projects.findIndex(p => p.id ===id);
-    if (to_be_updated_project===-1)
-    return null;
-    projects[to_be_updated_project] = {...projects[to_be_updated_project], ...project};
-    return projects[to_be_updated_project];
+async function deleteProject(id) {
+    const deleted = await Project.findByIdAndDelete(id);
+    return deleted;
+} 
+async function updateProject(id,project) {
+    const updated = await Project.findByIdAndUpdate(id, project, { new: true });
+    return updated;
 }
 module.exports={
     getAllProjects,
